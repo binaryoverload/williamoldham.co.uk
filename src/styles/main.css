@@ -16,4 +16,17 @@
   body {
     @apply font-mono;
   }
+
+  *::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+  }
+
+  *::-webkit-scrollbar-track {
+    @apply bg-zinc-200 rounded;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply bg-zinc-600 cursor-auto rounded;
+  }
 }

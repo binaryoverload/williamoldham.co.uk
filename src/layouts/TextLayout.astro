@@ -1,8 +1,10 @@
 ---
 import GeneralLayout from "./GeneralLayout.astro"
+
+const { title } = Astro.props.frontmatter || Astro.props
 ---
 
-<GeneralLayout>
+<GeneralLayout title={title}>
   <div class="max-w-prose mx-auto prose prose-slate prose-invert">
     <slot />
   </div>

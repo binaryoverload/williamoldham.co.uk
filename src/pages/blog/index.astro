@@ -1,11 +1,24 @@
 ---
-import BaseHead from "../../components/BaseHead.astro"
-import Footer from "../../components/Footer.astro"
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts"
 import { getCollection } from "astro:content"
 import FormattedDate from "../../components/FormattedDate.astro"
+import GeneralLayout from "../../layouts/GeneralLayout.astro"
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 )
 ---
+
+<GeneralLayout title="Blog">
+  <div class="grid grid-cols-2">
+    {
+      posts.map((post) => (
+        <a class="contents" href={`/blog/${post.slug}`}>
+          <span>
+            <FormattedDate date={post.data.pubDate} />
+          </span>
+          <h2>{post.data.title}</h2>
+        </a>
+      ))
+    }
+  </div>
+</GeneralLayout>
