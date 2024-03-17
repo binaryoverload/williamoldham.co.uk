@@ -9,7 +9,7 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <GeneralLayout title="Blog">
-  <div class="grid grid-cols-2">
+  <div class="grid grid-cols-[auto,1fr] gap-x-6">
     {
       posts.map((post) => (
         <a class="contents" href={`/blog/${post.slug}`}>
