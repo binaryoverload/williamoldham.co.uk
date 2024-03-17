@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .font-mono {
+    font-family: "Fira Code", monospace;
+  }
+
+  @supports (font-variation-settings: normal) {
+    .font-mono {
+      font-family: "Fira Code VF", monospace;
+    }
+  }
+
+  body {
+    @apply font-mono;
+  }
+}
