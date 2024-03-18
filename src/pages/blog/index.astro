@@ -4,7 +4,7 @@ import FormattedDate from "../../components/FormattedDate.astro"
 import GeneralLayout from "../../layouts/GeneralLayout.astro"
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
 ---
 
@@ -15,9 +15,7 @@ const posts = (await getCollection("blog")).sort(
       {
         posts.map((post) => (
           <a class="contents" href={`/blog/${post.slug}`}>
-            <span>
-              <FormattedDate date={post.data.pubDate} />
-            </span>
+            <span>{post.data.pubDate.toISOString().split("T")[0]}</span>
             <h2>{post.data.title}</h2>
           </a>
         ))
