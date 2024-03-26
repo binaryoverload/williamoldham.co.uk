@@ -4,23 +4,43 @@ title: "About"
 ---
 
 export function Personal() {
-  return <span class="text-red-500">#</span>
+  return (
+    <defn title="Personal Experience" class="text-red-500 cursor-help">
+      #
+    </defn>
+  )
 }
 
 export function Professional() {
-  return <span class="text-green-500">$</span>
+  return (
+    <defn title="Professional Experience" class="text-green-500 cursor-help">
+      $
+    </defn>
+  )
 }
 
 export function Academic() {
-  return <span class="text-purple-500">@</span>
+  return (
+    <defn title="Academic Experience" class="text-purple-500 cursor-help">
+      @
+    </defn>
+  )
 }
 
 export function Learning() {
-  return <span class="text-yellow-500">∞</span>
+  return (
+    <defn title="Learning" class="text-yellow-500 cursor-help">
+      §
+    </defn>
+  )
 }
 
 export function Interested() {
-  return <span class="text-cyan-500">?</span>
+  return (
+    <defn title="Interested" class="text-cyan-500 cursor-help">
+      ?
+    </defn>
+  )
 }
 
 # About me
@@ -63,6 +83,9 @@ Key:
 
 I pride myself on being a polyglot programmer, and I have experience with a wide range of programming languages. Here are some of them:
 
+<div class="grid lg:grid-cols-2">
+<div>
+
 #### Server-side and desktop languages
 
 - C# <Professional /> <Personal /> <Academic />
@@ -74,6 +97,9 @@ I pride myself on being a polyglot programmer, and I have experience with a wide
 - C/C++ <Academic />
 - Rust <Learning />
 
+</div>
+<div>
+
 #### Web languages
 
 - TypeScript and JavaScript <Professional /> <Personal />
@@ -82,12 +108,19 @@ I pride myself on being a polyglot programmer, and I have experience with a wide
   - Vue.js <Professional /> <Personal />
   - React <Personal />
   - Astro <Personal /> <Learning />
-- HTML and CSS (Tailwind CSS) <Professional /> <Personal />
+- HTML <Professional /> <Personal />
+- CSS (with Tailwind CSS) <Professional /> <Personal />
+
+</div>
+<div>
 
 #### Scripting languages
 
 - PowerShell <Professional />
 - Bash <Personal />
+
+</div>
+<div>
 
 #### Miscellaneous languages
 
@@ -96,7 +129,17 @@ I pride myself on being a polyglot programmer, and I have experience with a wide
 - Prolog <Academic />
 - OpenCL <Academic />
 
-### Databases
+</div>
+</div>
+
+### Networking, SysOps, and DevOps
+
+Alongside my software development skills, I have a strong background in networking, system administration, and DevOps.
+
+<div class="grid lg:grid-cols-2">
+<div>
+
+#### Databases
 
 - Microsoft SQL Server <Professional />
 - PostgreSQL <Professional /> <Personal />
@@ -106,24 +149,55 @@ I pride myself on being a polyglot programmer, and I have experience with a wide
 - Redis <Professional /> <Personal />
 - Cassandra <Personal />
 
-### Networking
+</div>
+<div>
+
+#### Networking
 
 - Cisco IOS <Professional /> <Academic />
 - Dell OS6, OS10 <Professional />
 - Juniper JunOS <Interested />
 - HP ArubaOS <Interested />
 
-### Cloud
+</div>
+<div>
+
+#### Cloud
 
 - Microsoft Azure <Professional />
 - Amazon Web Services <Professional />
 - Google Cloud Platform <Academic />
 - DigitalOcean <Professional /> <Personal />
 
-### DevOps
+</div>
+<div>
 
-- Docker <Professional /> <Personal />
-- Kubernetes <Professional /> <Personal />
+#### DevOps
+
 - Terraform <Professional /> <Personal />
 - GitHub Actions <Professional /> <Personal />
 - Jenkins <Personal />
+
+</div>
+<div>
+
+#### Monitoring
+
+- Grafana <Professional /> <Personal />
+- Prometheus <Professional /> <Personal />
+- Zabbix <Professional />
+- InfluxDB <Professional />
+
+</div>
+<div>
+
+#### Virtualisation and Containers
+
+- Docker <Professional /> <Personal />
+- Kubernetes <Professional /> <Personal />
+- Hyper-V <Professional /> <Personal />
+- VMware ESXi <Personal />
+- Proxmox <Personal />
+
+</div>
+</div>
