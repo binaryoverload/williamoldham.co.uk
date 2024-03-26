@@ -11,6 +11,14 @@ export default {
             "blockquote p:first-of-type::after": { content: "none" },
           },
         },
+        DEFAULT: {
+          css: {
+            "ul ul": {
+              marginTop: "0",
+              marginBottom: "0",
+            },
+          },
+        },
       },
     },
   },
