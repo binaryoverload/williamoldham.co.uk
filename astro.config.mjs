@@ -5,13 +5,36 @@ import tailwind from "@astrojs/tailwind"
 import emoji from "remark-emoji"
 import remarkMath from "remark-math"
 import rehypeMathjax from "rehype-mathjax"
+import remarkToc from "remark-toc"
+import rehypeSlug from "rehype-slug"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
   markdown: {
-    remarkPlugins: [[emoji, { accessible: true }], remarkMath],
-    rehypePlugins: [rehypeMathjax],
+    remarkPlugins: [[emoji, { accessible: true }], remarkMath, [remarkToc, {}]],
+    rehypePlugins: [
+      rehypeMathjax,
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "wrap",
+          content: {
+            type: "element",
+            tagName: "span",
+            properties: {
+              className: ["absolute -left-5 opacity-0 group-hover:opacity-100"],
+            },
+            children: [{ type: "text", value: "#" }],
+          },
+          properties: {
+            className: ["relative group no-underline"],
+          },
+        },
+      ],
+    ],
     gfm: true,
     syntaxHighlight: "shiki",
     shikiConfig: {
