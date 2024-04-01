@@ -9,14 +9,27 @@ import remarkToc from "remark-toc"
 import rehypeSlug from "rehype-slug"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 
+import robotsTxt from "astro-robots-txt"
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://williamoldham.co.uk",
   markdown: {
     remarkPlugins: [
-      [emoji, { accessible: true }],
+      [
+        emoji,
+        {
+          accessible: true,
+        },
+      ],
       remarkMath,
-      [remarkToc, { tight: true, maxDepth: 3 }],
+      [
+        remarkToc,
+        {
+          tight: true,
+          maxDepth: 3,
+        },
+      ],
     ],
     rehypePlugins: [
       rehypeMathjax,
@@ -33,7 +46,12 @@ export default defineConfig({
                 "absolute -left-5 opacity-0 group-hover:opacity-100 transition-opacity",
               ],
             },
-            children: [{ type: "text", value: "#" }],
+            children: [
+              {
+                type: "text",
+                value: "#",
+              },
+            ],
           },
           headingProperties: {
             className: ["scroll-mt-5"],
@@ -50,5 +68,5 @@ export default defineConfig({
       theme: "github-dark-default",
     },
   },
-  integrations: [mdx(), sitemap(), tailwind()],
+  integrations: [mdx(), sitemap(), tailwind(), robotsTxt()],
 })
