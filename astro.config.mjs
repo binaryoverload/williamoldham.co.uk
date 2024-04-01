@@ -13,7 +13,11 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings"
 export default defineConfig({
   site: "https://example.com",
   markdown: {
-    remarkPlugins: [[emoji, { accessible: true }], remarkMath, [remarkToc, {}]],
+    remarkPlugins: [
+      [emoji, { accessible: true }],
+      remarkMath,
+      [remarkToc, { tight: true, maxDepth: 3 }],
+    ],
     rehypePlugins: [
       rehypeMathjax,
       rehypeSlug,
