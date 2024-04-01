@@ -1,17 +1,18 @@
 ---
-import { getCollection } from "astro:content"
+import { getCollection, CollectionEntry } from "astro:content"
 import GeneralLayout from "../../layouts/GeneralLayout.astro"
 import { getISODate } from "../../utils/date"
+import { filterBlogPost } from "../../utils/content"
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => getEffectiveDate(b).valueOf() - getEffectiveDate(a).valueOf()
-)
+const posts = (await getCollection("blog"))
+  .filter(filterBlogPost)
+  .sort((a, b) => getEffectiveDate(b).valueOf() - getEffectiveDate(a).valueOf())
 
-function getEffectiveDate(post: (typeof posts)[number]) {
+function getEffectiveDate(post: CollectionEntry<"blog">) {
   return post.data.updatedDate || post.data.pubDate
 }
 
-function getEffectiveDateString(post: (typeof posts)[number]) {
+function getEffectiveDateString(post: CollectionEntry<"blog">) {
   return getISODate(getEffectiveDate(post))
 }
 ---
@@ -23,8 +24,21 @@ function getEffectiveDateString(post: (typeof posts)[number]) {
       {
         posts.map((post) => (
           <a class="contents" href={`/blog/${post.slug}`}>
-            <span>{getEffectiveDateString(post)}</span>
-            <h2>{post.data.title}</h2>
+            <span
+              class:list={[
+                ...(getEffectiveDate(post) > new Date()
+                  ? ["text-orange-400"]
+                  : []),
+              ]}
+            >
+              {getEffectiveDateString(post)}
+            </span>
+            <h2>
+              {post.data.title}
+              {post.data.state === "draft" ? (
+                <span class="text-orange-400"> (Draft)</span>
+              ) : null}
+            </h2>
           </a>
         ))
       }
