@@ -1,11 +1,19 @@
 ---
 import { getCollection } from "astro:content"
-import FormattedDate from "../../components/FormattedDate.astro"
 import GeneralLayout from "../../layouts/GeneralLayout.astro"
+import { getISODate } from "../../utils/date"
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => getEffectiveDate(b).valueOf() - getEffectiveDate(a).valueOf()
 )
+
+function getEffectiveDate(post: (typeof posts)[number]) {
+  return post.data.updatedDate || post.data.pubDate
+}
+
+function getEffectiveDateString(post: (typeof posts)[number]) {
+  return getISODate(getEffectiveDate(post))
+}
 ---
 
 <GeneralLayout title="Blog">
@@ -15,7 +23,7 @@ const posts = (await getCollection("blog")).sort(
       {
         posts.map((post) => (
           <a class="contents" href={`/blog/${post.slug}`}>
-            <span>{post.data.pubDate.toISOString().split("T")[0]}</span>
+            <span>{getEffectiveDateString(post)}</span>
             <h2>{post.data.title}</h2>
           </a>
         ))

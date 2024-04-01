@@ -1,6 +1,7 @@
 ---
 title: "Savings account interest: The breakdown"
 pubDate: "2019-09-07"
+updatedDate: "2024-03-18"
 ---
 
 > This blog post is aimed at people in the UK. The information contained within will most likely not be applicable to other countries!
