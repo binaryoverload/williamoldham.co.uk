@@ -25,9 +25,14 @@ export default defineConfig({
             type: "element",
             tagName: "span",
             properties: {
-              className: ["absolute -left-5 opacity-0 group-hover:opacity-100"],
+              className: [
+                "absolute -left-5 opacity-0 group-hover:opacity-100 transition-opacity",
+              ],
             },
             children: [{ type: "text", value: "#" }],
+          },
+          headingProperties: {
+            className: ["scroll-mt-5"],
           },
           properties: {
             className: ["relative group no-underline"],
