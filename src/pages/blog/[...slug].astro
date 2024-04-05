@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content"
 import TextLayout from "../../layouts/TextLayout.astro"
 import FormattedDate from "../../components/FormattedDate.astro"
 import { filterBlogPost } from "../../utils/content"
+import DraftTag from "../../components/DraftTag.astro"
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog")
@@ -26,7 +27,8 @@ const { Content } = await post.render()
           (Updated <FormattedDate date={post.data.updatedDate} />)
         </span>
       ) : null
-    }</span
+    }
+    {post.data.state === "draft" ? <DraftTag /> : null}</span
   >
   <Content />
 </TextLayout>

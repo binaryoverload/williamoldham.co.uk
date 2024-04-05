@@ -20,6 +20,12 @@ export default {
               marginTop: "0",
               marginBottom: "0",
             },
+            "code::before": {
+              content: "none",
+            },
+            "code::after": {
+              content: "none",
+            },
           },
         },
       },

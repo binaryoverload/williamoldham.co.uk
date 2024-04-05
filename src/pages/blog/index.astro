@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from "astro:content"
 import GeneralLayout from "../../layouts/GeneralLayout.astro"
 import { getISODate } from "../../utils/date"
 import { filterBlogPost } from "../../utils/content"
+import DraftTag from "../../components/DraftTag.astro"
 
 const posts = (await getCollection("blog"))
   .filter(filterBlogPost)
@@ -35,9 +36,7 @@ function getEffectiveDateString(post: CollectionEntry<"blog">) {
             </span>
             <h2>
               {post.data.title}
-              {post.data.state === "draft" ? (
-                <span class="text-orange-400"> (Draft)</span>
-              ) : null}
+              {post.data.state === "draft" ? <DraftTag /> : null}
             </h2>
           </a>
         ))
