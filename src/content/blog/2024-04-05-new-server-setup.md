@@ -24,32 +24,15 @@ servers, but the reader may choose not to.
 If you are using a cloud provider that installs Ubuntu for you, you can skip
 this step!
 
-### Where?
-
 Ubuntu Server can be downloaded from the Ubuntu website at
 https://ubuntu.com/download/server
 
-### What?
-
-In most instances, you should make sure to download the Ubuntu LTS (Long-Term
-Support) version which includes a total of 10 years of updates and security from
-when it was first released. The non-LTS versions only have 9 months of security
-maintenance!
+You should make sure to download the Ubuntu LTS (Long-Term Support) version
+which includes a total of 10 years of updates and security from when it was
+first released. The non-LTS versions only have 9 months of security maintenance!
 
 At the time of writing, the current LTS version of Ubuntu is `22.04 LTS` with
 the new version `24.04 LTS` due to come out next week.
-
-### Why?
-
-For running servers, you will typically want a headless (No GUI) operating
-system that is lightweight and doesn't come with unnecessary programs and
-overheads that a desktop OS would have.
-
-For Ubuntu, this takes the form of Ubuntu Server which is the same distro of
-Linux that powers their desktop OS but without the overheads.
-
-**Note: You _can_ use Ubuntu Desktop for this guide, but when running as a
-server using Ubuntu server is highly recommended**
 
 ### Installing Ubuntu Server
 
@@ -75,10 +58,10 @@ sudo apt upgrade
 
 ### Reset all passwords
 
-If you are using a cloud provider, you should reset all passwords to ensure that
-you are the only one with access to the server. Often cloud providers will give
-you a root password or a password for the default user account which can be sent
-over an insecure media such as email.
+If you are using a cloud provider, you should reset **_all_** passwords to
+ensure that you are the only one with access to the server. Often cloud
+providers will give you a root password or a password for the default user
+account which can be sent over an insecure media such as email.
 
 You can reset the password for a user by running the
 [`passwd`](https://linux.die.net/man/1/passwd) command as the user. You will be
@@ -95,10 +78,9 @@ could harm your system and acts as a good
 [defence in depth](<https://en.wikipedia.org/wiki/Defense_in_depth_(computing)>)
 tactic.
 
-Linux operating systems have a built-in command called
-[`sudo`](https://linux.die.net/man/8/sudo) that allows you to run commands as
-the root user without having to log in as the root user. This is a more secure
-way of running commands as the root user.
+The built-in command called [`sudo`](https://linux.die.net/man/8/sudo) allows
+you to run commands as the root user without having to log in as the root user.
+This is a more secure way of running commands as the root user.
 
 To create a new user account with sudo access, you can run the following
 commands:
@@ -108,24 +90,21 @@ adduser <username>
 usermod -aG sudo <username>
 ```
 
-Replace `<username>` with the username you want to create.
-
 The [`adduser`](https://linux.die.net/man/8/adduser) command will create a new
-user account with the username you provide. You will be prompted to enter a
-password for the new user account and some additional information that is
-optional.
+user account with the username you provide and prompt you for a password.
 
 The [`usermod`](https://linux.die.net/man/8/usermod) command will add the user
-to the `sudo` group which gives them sudo access.
+to the `sudo` group which gives them access to the `sudo` command.
 
 ## Configuring and securing SSH access
 
-SSH (Secure Shell) is a protocol that allows you to securely connect to your
-server over the internet. It is the primary way to access a server remotely and
-is used for tasks such as managing files, running commands, and configuring
-services.
-
 If you are using a cloud provider, SSH will typically be enabled by default.
+When setting Ubuntu up on your own hardware, you maybe need to install the SSH
+server using the following command:
+
+```bash
+sudo apt install openssh-server
+```
 
 ### Public Key Authentication
 
