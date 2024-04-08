@@ -27,7 +27,7 @@ export default defineConfig({
         remarkToc,
         {
           tight: true,
-          maxDepth: 3,
+          maxDepth: 2,
         },
       ],
     ],
