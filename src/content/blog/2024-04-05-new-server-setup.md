@@ -4,6 +4,8 @@ pubDate: "2024-04-05"
 state: "draft"
 ---
 
+## Table of Contents
+
 ## Background
 
 I primarily made this guide to remind myself of the steps I should go through
@@ -17,7 +19,7 @@ internet. The exception to this is the items under
 [Nice to haves](#nice-to-haves). These items are generally what I use on
 servers, but the reader may choose not to.
 
-## Download and install Ubuntu server
+## Download, install and update Ubuntu server
 
 If you are using a cloud provider that installs Ubuntu for you, you can skip
 this step!
@@ -55,12 +57,9 @@ The installation of Ubuntu Server used a step by step wizard to guide you
 through the process.
 
 Ubuntu has a great tutorial on each of the steps here,
+[click here to read it](https://ubuntu.com/tutorials/install-ubuntu-server).
 
-<a href="https://ubuntu.com/tutorials/install-ubuntu-server" target="_blank">
-  click here to read it.
-</a>
-
-## Update and Upgrade
+### Update and Upgrade
 
 Congratulations! You've installed Ubuntu Server. The first thing you should do
 is update and upgrade the system.
@@ -72,11 +71,28 @@ sudo apt update
 sudo apt upgrade
 ```
 
-## Ubuntu Pro (Free for personal use)
-
 ## Setting up user accounts
 
-- Reset all passwords
+### Reset all passwords
+
+If you are using a cloud provider, you should reset all passwords to ensure that
+you are the only one with access to the server. Often cloud providers will give
+you a root password or a password for the default user account which can be sent
+over an insecure media such as email.
+
+You can reset the password for a user by running the `passwd` command as the
+user. You will be prompted to enter the new password.
+
+### Create a non-root user account with sudo access
+
+If the user account you are using is the root account, you should create a new
+user account with sudo access. You should use this account for your day-to-day
+tasks and only use the root account when necessary. Not using the root account
+protects you from accidentally running commands that could harm your system and
+acts as a good
+[defence in depth](<https://en.wikipedia.org/wiki/Defense_in_depth_(computing)>)
+tactic.
+
 - Create a non-root user account with sudo access
 
 ## Configuring and securing SSH access
@@ -98,6 +114,8 @@ sudo apt upgrade
 - SSH Jail
 
 ## Nice to haves
+
+### Ubuntu Pro (Free for personal use)
 
 ### Install Docker
 
