@@ -90,7 +90,10 @@ SSH commonly uses password authentication to log in to a server. However, this
 suffers from a number of security vulnerabilities, such as brute force attacks.
 Public key authentication is a more secure method of logging in to a server.
 
-You can add your public key tothe
+Public key authentication uses a pair of keys: a public key and a private key.
+
+The public key is placed on the server and the private key is kept on your local
+machine. The public key is stored in the
 [`~/.ssh/authorized_keys`](https://linux.die.net/man/8/sshd#:~:text=AUTHORIZED_KEYS%20FILE%20FORMAT)
 file on the server in the user's home directory. It will look something like
 this (Either with `ssh-rsa` or `ssh-ed25519`):
@@ -111,9 +114,14 @@ Once you have generated a key pair, you can copy the public key to the server
 using one of the methods in this guide:
 [How to copy SSH keys to a server](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-20-04).
 
+Once the public key is copied to the server, you can use an SSH terminal of your
+choice in combination with an SSH agent to login to the server using public key
+authentication. You will know you are using public key authentication if the
+server doesn't prompt you for a password when logging in.
+
 ### Configuring SSH Server
 
-Confire the SSH server to be more secure by editing the `/etc/ssh/sshd_config`
+Configure the SSH server to be more secure by editing the `/etc/ssh/sshd_config`
 file.
 
 The config lines may be commented out or already present in the file. Ensure you
