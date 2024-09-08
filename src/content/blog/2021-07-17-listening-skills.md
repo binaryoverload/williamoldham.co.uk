@@ -1,5 +1,6 @@
 ---
 title: "Listening Skills"
+type: "blog"
 pubDate: "2021-07-17"
 ---
 

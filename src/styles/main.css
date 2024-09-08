@@ -15,6 +15,10 @@
     }
   }
 
+  li li {
+    @apply text-gray-400 text-[15px] leading-6;
+  }
+
   body {
     @apply font-mono;
   }

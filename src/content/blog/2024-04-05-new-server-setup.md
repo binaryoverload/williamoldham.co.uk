@@ -1,6 +1,7 @@
 ---
 title: "Setting up a new Ubuntu server"
-pubDate: "2024-04-05"
+type: "resource"
+pubDate: "2024-09-08"
 state: "draft"
 ---
 
@@ -21,18 +22,11 @@ servers, but the reader may choose not to.
 
 ## Download, install and update Ubuntu server
 
-If you are using a cloud provider that installs Ubuntu for you, you can skip
-this step!
-
 Ubuntu Server can be downloaded from the Ubuntu website at
 https://ubuntu.com/download/server
 
-You should make sure to download the Ubuntu LTS (Long-Term Support) version
-which includes a total of 10 years of updates and security from when it was
-first released. The non-LTS versions only have 9 months of security maintenance!
-
-At the time of writing, the current LTS version of Ubuntu is `22.04 LTS` with
-the new version `24.04 LTS` due to come out next week.
+At the time of writing, the current LTS (Long-Term Support - 10 Years of
+updates!) version of Ubuntu is `24.04 LTS`.
 
 ### Installing Ubuntu Server
 
@@ -44,11 +38,6 @@ Ubuntu has a great tutorial on each of the steps here,
 
 ### Update and Upgrade
 
-Congratulations! You've installed Ubuntu Server. The first thing you should do
-is update and upgrade the system.
-
-You can do this by running the following commands:
-
 ```bash
 sudo apt update
 sudo apt upgrade
@@ -58,12 +47,10 @@ sudo apt upgrade
 
 ### Reset all passwords
 
-If you are using a cloud provider, you should reset **_all_** passwords to
-ensure that you are the only one with access to the server. Often cloud
-providers will give you a root password or a password for the default user
-account which can be sent over an insecure media such as email.
+Reset **_all_** passwords to ensure that you are the only one with access to the
+server.
 
-You can reset the password for a user by running the
+Reset the password for a user by running the
 [`passwd`](https://linux.die.net/man/1/passwd) command as the user. You will be
 prompted to enter the new password.
 
@@ -72,15 +59,6 @@ prompted to enter the new password.
 If the user account you are using is the root account, you should create a new
 user account to use for day-to-day tasks and only use the root account when
 necessary.
-
-Not using the root account protects you from accidentally running commands that
-could harm your system and acts as a good
-[defence in depth](<https://en.wikipedia.org/wiki/Defense_in_depth_(computing)>)
-tactic.
-
-The built-in command called [`sudo`](https://linux.die.net/man/8/sudo) allows
-you to run commands as the root user without having to log in as the root user.
-This is a more secure way of running commands as the root user.
 
 To create a new user account with sudo access, you can run the following
 commands:
@@ -112,12 +90,9 @@ SSH commonly uses password authentication to log in to a server. However, this
 suffers from a number of security vulnerabilities, such as brute force attacks.
 Public key authentication is a more secure method of logging in to a server.
 
-Public key authentication uses a pair of keys: a public key and a private key.
-
-The public key is placed on the server and the private key is kept on your local
-machine. The public key is stored in the `~/.ssh/authorized_keys` file on the
-server in the user's home directory. It will look something like this (Either
-with `ssh-rsa` or `ssh-ed25519`):
+You can add your public key to the `~/.ssh/authorized_keys` file on the server
+in the user's home directory to login with your private key. It will look
+something like this (Either with `ssh-rsa` or `ssh-ed25519`):
 
 ```bash
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDZl ... 8J5z user@host
@@ -137,14 +112,93 @@ using one of the methods in this guide:
 
 ### Configuring SSH Server
 
-- Change port
-- Disable root SSH access
-- Disable password authentication
-- Disable `DebianBanner`, `PermitEmptyPasswords`
+Confire the SSH server to be more secure by editing the `/etc/ssh/sshd_config`
+file.
+
+The config lines may be commented out or already present in the file. Ensure you
+search for the line to see if it is present.
+
+---
+
+1. Change the port that SSH listens on to a non-standard port.
+
+This will help reduce the number of brute force attacks on your server.
+
+You can choose any port number between 1024 and 65535 that is not already in use
+by another service.
+
+For example, to change the port to `2222`, you would edit
+
+```bash
+Port 2222
+```
+
+---
+
+2. Disable root SSH access
+
+This will prevent anyone from logging in as the root user over SSH.
+
+```bash
+PermitRootLogin no
+```
+
+---
+
+3. Disable password authentication
+
+**Important!** Ensure you have set up public key authentication before disabling
+password login!
+
+```bash
+PasswordAuthentication no
+```
+
+---
+
+4. Disable `DebianBanner`
+
+Disabling `DebianBanner` will prevent the SSH server from giving away
+information about the server's OS.
+
+```bash
+DebianBanner no
+```
+
+---
 
 ### Setup Fail2Ban
 
-- SSH Jail
+Fail2Ban is a service that monitors log files for failed login attempts and bans
+the IP address of the attacker.
+
+First install Fail2Ban:
+
+```bash
+sudo apt install fail2ban
+```
+
+Then copy the default configuration file:
+
+```bash
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.d/custom.conf
+```
+
+Edit the `custom.confl` file to enable the SSH jail:
+
+Make sure to set the `port` to the port you set in the SSH config file.
+
+```toml
+[sshd]
+enabled = true
+port = PORT
+```
+
+Finally, restart the Fail2Ban service:
+
+```bash
+sudo systemctl restart fail2ban
+```
 
 ## Nice to haves
 

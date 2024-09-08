@@ -1,5 +1,6 @@
 ---
 title: "Password Managers: You should use one!"
+type: "blog"
 pubDate: "2021-06-22"
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Savings account interest: The breakdown"
+type: "blog"
 pubDate: "2019-09-07"
 updatedDate: "2024-03-18"
 ---
