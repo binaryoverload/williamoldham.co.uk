@@ -90,9 +90,10 @@ SSH commonly uses password authentication to log in to a server. However, this
 suffers from a number of security vulnerabilities, such as brute force attacks.
 Public key authentication is a more secure method of logging in to a server.
 
-You can add your public key to the `~/.ssh/authorized_keys` file on the server
-in the user's home directory to login with your private key. It will look
-something like this (Either with `ssh-rsa` or `ssh-ed25519`):
+You can add your public key tothe
+[`~/.ssh/authorized_keys`](https://linux.die.net/man/8/sshd#:~:text=AUTHORIZED_KEYS%20FILE%20FORMAT)
+file on the server in the user's home directory. It will look something like
+this (Either with `ssh-rsa` or `ssh-ed25519`):
 
 ```bash
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDZl ... 8J5z user@host
