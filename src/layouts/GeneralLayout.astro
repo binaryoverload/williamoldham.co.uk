@@ -33,43 +33,66 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE
       <Footer />
     </div>
     <style is:global>
+      /* This code handles the "soloing" of technology category, hiding all li elements that don't belong to the category 
+      
+      This rule applies when any `.icon-x` inside `.technologies` is hovered.
+  
+      Selects list items within `.technologies` (excluding those with the `.key` class) that:
+        1. Are direct children of `div > ul > li`, or (Top level list item)
+        2. Are nested `ul ul:has(.icon-c) li` that are in a container that has at least one `.icon-x` class (Nested list items, that are in a section that isn't fully excluded)
+        
+      For both of these types of list items, the rule excludes any list item that contains `.icon-x` showing only the ones that do not contain the hovered icon.
+      */
+
       .technologies li {
         @apply transition-opacity;
       }
 
       div:has(.technologies .icon-open-source:hover)
         .technologies:not(.key)
-        li:not(:has(.icon-open-source)) {
+        li:is(div > ul > li, ul ul:has(.icon-open-source) li):not(
+          :has(.icon-open-source)
+        ) {
         @apply opacity-50;
       }
 
       div:has(.technologies .icon-learning:hover)
         .technologies:not(.key)
-        li:not(:has(.icon-learning)) {
+        li:is(div > ul > li, ul ul:has(.icon-learning) li):not(
+          :has(.icon-learning)
+        ) {
         @apply opacity-50;
       }
 
       div:has(.technologies .icon-professional:hover)
         .technologies:not(.key)
-        li:not(:has(.icon-professional)) {
+        li:is(div > ul > li, ul ul:has(.icon-professional) li):not(
+          :has(.icon-professional)
+        ) {
         @apply opacity-50;
       }
 
       div:has(.technologies .icon-personal:hover)
         .technologies:not(.key)
-        li:not(:has(.icon-personal)) {
+        li:is(div > ul > li, ul ul:has(.icon-personal) li):not(
+          :has(.icon-personal)
+        ) {
         @apply opacity-50;
       }
 
       div:has(.technologies .icon-academic:hover)
         .technologies:not(.key)
-        li:not(:has(.icon-academic)) {
+        li:is(div > ul > li, ul ul:has(.icon-academic) li):not(
+          :has(.icon-academic)
+        ) {
         @apply opacity-50;
       }
 
       div:has(.technologies .icon-interested:hover)
         .technologies:not(.key)
-        li:not(:has(.icon-interested)) {
+        li:is(div > ul > li, ul ul:has(.icon-interested) li):not(
+          :has(.icon-interested)
+        ) {
         @apply opacity-50;
       }
     </style>
