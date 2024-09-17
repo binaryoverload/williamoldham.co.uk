@@ -8,6 +8,7 @@ import rehypeMathjax from "rehype-mathjax"
 import remarkToc from "remark-toc"
 import rehypeSlug from "rehype-slug"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeExternalLinks from 'rehype-external-links'
 
 import robotsTxt from "astro-robots-txt"
 
@@ -27,13 +28,14 @@ export default defineConfig({
         remarkToc,
         {
           tight: true,
-          maxDepth: 3,
+          maxDepth: 2,
         },
       ],
     ],
     rehypePlugins: [
       rehypeMathjax,
       rehypeSlug,
+      [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }],
       [
         rehypeAutolinkHeadings,
         {

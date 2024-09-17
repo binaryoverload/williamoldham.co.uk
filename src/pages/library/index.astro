@@ -1,0 +1,73 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+import GeneralLayout from "../../layouts/GeneralLayout.astro"
+import { getISODate } from "../../utils/date"
+import {
+  filterBlogPost,
+  getEffectiveDate,
+  sortBlogPost,
+} from "../../utils/content"
+import DraftTag from "../../components/DraftTag.astro"
+
+const blogPosts = (await getCollection("blog"))
+  .filter(filterBlogPost("blog"))
+  .sort(sortBlogPost)
+
+const resources = (await getCollection("blog"))
+  .filter(filterBlogPost("resource"))
+  .sort(sortBlogPost)
+
+function getEffectiveDateString(post: CollectionEntry<"blog">) {
+  return getISODate(getEffectiveDate(post))
+}
+---
+
+<GeneralLayout title="Blog">
+  <div class="space-y-8">
+    <div class="max-w-prose mx-auto">
+      <h2 class="font-bold text-2xl mb-6 text-white">Resources</h2>
+      <div>
+        {
+          resources.map((post) => (
+            <a
+              class="contents hover:text-orange-300"
+              href={`/library/${post.data.type}/${post.slug}`}
+            >
+              <h2>
+                {post.data.title}
+                {post.data.state === "draft" ? <DraftTag /> : null}
+              </h2>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div class="max-w-prose mx-auto">
+      <h2 class="font-bold text-2xl mb-6 text-white">Blog</h2>
+      <div class="grid grid-cols-[auto,1fr] gap-x-6">
+        {
+          blogPosts.map((post) => (
+            <a
+              class="contents hover:text-orange-300"
+              href={`/library/${post.data.type}/${post.slug}`}
+            >
+              <span
+                class:list={[
+                  ...(getEffectiveDate(post) > new Date()
+                    ? ["text-orange-400"]
+                    : []),
+                ]}
+              >
+                {getEffectiveDateString(post)}
+              </span>
+              <h2>
+                {post.data.title}
+                {post.data.state === "draft" ? <DraftTag /> : null}
+              </h2>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</GeneralLayout>

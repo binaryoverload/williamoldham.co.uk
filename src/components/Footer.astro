@@ -1,10 +1,16 @@
 ---
 const today = new Date()
+
+const startYear = 2024
+
+const year = today.getFullYear()
+
+const years = year === startYear ? year : `${startYear} - ${year}`
 ---
 
 <footer class="flex flex-col gap-4 items-center justify-center pb-8 pt-16">
   <span class="text-sm"
-    >&copy; {today.getFullYear()}
+    >&copy; {years}
     <a
       href="https://github.com/binaryoverload"
       class="hover:underline"

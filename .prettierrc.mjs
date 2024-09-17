@@ -12,4 +12,5 @@ export default {
   semi: false,
   singleQuote: false,
   trailingComma: "es5",
+  proseWrap: "always",
 }
