@@ -1,9 +1,10 @@
 import plugin from "tailwindcss/plugin"
+import { gridAreas } from "tailwindcss-grid-areas";
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue,svg}",
     "astro.config.mjs",
   ],
   theme: {
@@ -41,5 +42,6 @@ export default {
         '&.prose :where(:not(pre)>code):not(:where([class~="not-prose"] *))'
       )
     }),
+    gridAreas()
   ],
 }

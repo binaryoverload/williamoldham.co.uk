@@ -10,13 +10,13 @@
   @supports (font-variation-settings: normal) {
     .font-mono {
       font-family: "Fira Code VF", monospace;
-      font-feature-settings: "ss01", "ss02", "ss03", "ss04", "ss05", "zero",
-        "cv06", "";
+      font-feature-settings: "ss01", "ss02", "ss03", "ss04", "zero", "cv06",
+        "cv14";
     }
   }
 
   li li {
-    @apply text-gray-400 text-[15px] leading-6;
+    @apply text-gray-300/75 text-[15px] leading-6;
   }
 
   body {

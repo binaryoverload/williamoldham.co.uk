@@ -78,6 +78,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.5.12
         version: 0.5.12(prettier-plugin-astro@0.13.0)(prettier@3.2.5)
+      tailwindcss-grid-areas:
+        specifier: ^0.1.1
+        version: 0.1.1(tailwindcss@3.4.1)
 
 packages:
 
@@ -2585,6 +2588,11 @@ packages:
 
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
+
+  tailwindcss-grid-areas@0.1.1:
+    resolution: {integrity: sha512-r1Cuhe4Z+ebz74udfHNoLy9A0hY3V+1bo/BBQCfrdNaVC8/ptrUP0CEYQAMT8Lm6/ujCHByMbs2G06Zwbzp0kg==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0'
 
   tailwindcss@3.4.1:
     resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==}
@@ -6144,6 +6152,10 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   symbol-tree@3.2.4: {}
+
+  tailwindcss-grid-areas@0.1.1(tailwindcss@3.4.1):
+    dependencies:
+      tailwindcss: 3.4.1
 
   tailwindcss@3.4.1:
     dependencies:

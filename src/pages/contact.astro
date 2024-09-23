@@ -1,36 +1,80 @@
 ---
 import TextLayout from "../layouts/TextLayout.astro"
+import SignalLogo from "../assets/signal-logo.svg?raw"
+import LinkedinLogo from "../assets/linkedin-logo.svg?raw"
 ---
 
 <TextLayout title="Contact">
-  Contact me If you have any questions or just want to say hi, feel free to
-  reach out to me at <a href="mailto:hello@williamoldham.co.uk"
-    >hello@williamoldham.co.uk</a
-  >. I'll do my best to get back to you as soon as possible.
+  <p>
+    Contact me If you have any questions or just want to say hi, feel free to
+    reach out to me at <a href="mailto:hello@williamoldham.co.uk"
+      >hello@williamoldham.co.uk</a
+    >. I'll do my best to get back to you as soon as possible.
+  </p>
 
-  <ul class="space-y-3">
-    <li>
-      <i class="fa-brands fa-github text-xl"></i>
-      <a href="https://github.com/binaryoverload" target="_blank">GitHub </a>
-    </li>
-    <li>
-      <span>
-        <i
-          class="fa-brands fa-linkedin-in text-sm w-5 h-5 rounded text-center bg-[#0077B5]"
-        ></i>
-        <a
-          href="https://www.linkedin.com/in/william-o-a77357139/"
-          target="_blank"
-        >
-          LinkedIn
-        </a>
-      </span>
-    </li>
-    <li>
-      <span>
-        <i class="fa-brands fa-twitter text-xl text-[#1DA1F2]"></i>
-        <a href="https://twitter.com/binaryoverload" target="_blank">Twitter</a>
-      </span>
-    </li>
-  </ul>
+  <div class="gap-4 flex w-full justify-center">
+    <a
+      href="https://github.com/binaryoverload"
+      target="_blank"
+      class="flex items-center gap-2 no-underline group"
+    >
+      <i class="fa-brands fa-github text-2xl m-0 text-white"></i>
+      <span class="underline group-hover:no-underline">GitHub</span>
+    </a>
+    <a
+      href="https://www.linkedin.com/in/william-o-a77357139/"
+      target="_blank"
+      class="flex items-center gap-2 no-underline group"
+    >
+      <Fragment set:html={LinkedinLogo} />
+      <span class="underline group-hover:no-underline">LinkedIn </span>
+    </a>
+
+    <a
+      href="https://signal.me/#eu/A8oWwZxacVIvMZCfh8wXG1VBse6jACnyjRRfSmGbEqOqVhZftrVAMLyhZvctlSfI"
+      target="_blank"
+      class="flex items-center gap-2 no-underline group"
+    >
+      <Fragment set:html={SignalLogo} />
+      <span class="underline group-hover:no-underline">Signal </span>
+    </a>
+  </div>
+
+  <h2>Tutoring</h2>
+  <p>
+    I offer tutoring services for a range of subjects, including computer
+    science, mathematics, and physics for GCSE, A-Level, undergraduate, and
+    professional students. If you're interested in tutoring, please get in
+    touch.
+  </p>
+  <p>
+    Please view my <a
+      target="_blank"
+      href="https://www.superprof.co.uk/professional-computer-programmer-and-network-engineer-teaching-ict-computer-science-and-maths-relaxed-teaching-approach.html"
+      >tutoring page</a
+    > for more information or contact me directly at <a
+      href="mailto:tutoring@williamoldham.co.uk">tutoring@williamoldham.co.uk</a
+    >.
+  </p>
+  <p>
+    If you would like to book a tutoring session, I recommend booking a session
+    directly rather than through a Superprof subscription. This way, you can
+    save money on fees and I don't have to pay a commission.
+  </p>
+
+  <h2>Consulting</h2>
+  <p>
+    Currently, my focus is on smaller projects, so I'm unavailable for large
+    consulting opportunities at this time. However, if you have a project you
+    would like to discuss, please feel free to get in touch.
+  </p>
+  <p>
+    Please send me an email at <a href="mailto:consulting@williamoldham.co.uk"
+      >consulting@williamoldham.co.uk</a
+    >
+  </p>
+  <p>
+    I am happy to provide advice and guidance on a range of topics, including
+    DevOps, Cloud Computing, Networking, and System Administration.
+  </p>
 </TextLayout>

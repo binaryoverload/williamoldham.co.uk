@@ -15,9 +15,9 @@ const isActive = href === pathname || href === "/" + subpath?.[0]
 </a>
 <style>
   a {
-    @apply inline-block underline hover:no-underline;
+    @apply inline-block no-underline px-2 py-1 transition-colors hover:bg-gray-50 hover:text-gray-950;
   }
   a.active {
-    @apply font-bold text-orange-400;
+    @apply font-semibold text-gray-950 bg-orange-400;
   }
 </style>

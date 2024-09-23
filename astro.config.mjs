@@ -55,9 +55,6 @@ export default defineConfig({
               },
             ],
           },
-          headingProperties: {
-            className: ["scroll-mt-5"],
-          },
           properties: {
             className: ["relative group no-underline"],
           },
