@@ -2,6 +2,8 @@
 layout: "../layouts/TextLayout.astro"
 title: "About"
 ---
+import { Image } from 'astro:assets';
+import willSquare from '../assets/images/will_square.jpg';
 
 export function Personal() {
   return (
@@ -71,7 +73,7 @@ export function OpenSource() {
 
 <div class="grid grid-areas-[img,text] lg:grid-areas-[text_text_img] lg:grid-cols-3 gap-4">
   <div class="flex items-center justify-center area-[img]">
-    <img src="/images/will_square.jpg" alt="Will" class="rounded-lg shadow-lg  m-0 max-w-96 w-full" />
+    <Image src={willSquare} alt="Will" class="rounded-lg shadow-lg m-0 max-w-96 w-full" width={384} />
   </div>
   <div class="area-[text]">
     ## Hi!

@@ -1,8 +1,10 @@
 ---
 layout: "../layouts/TextLayout.astro"
 ---
+import { Image } from 'astro:assets';
+import will from '../assets/images/will.jpg';
 
-<img src="/images/will.jpg" alt="Will" class="rounded" />
+<Image src={will} alt="Will" class="rounded" width={640} />
 
 # Hi!
 
