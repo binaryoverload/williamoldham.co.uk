@@ -2,6 +2,7 @@
 import TextLayout from "../layouts/TextLayout.astro"
 import SignalLogo from "../assets/signal-logo.svg?raw"
 import LinkedinLogo from "../assets/linkedin-logo.svg?raw"
+import { Icon } from "astro-icon/components"
 ---
 
 <TextLayout title="Contact">
@@ -18,7 +19,7 @@ import LinkedinLogo from "../assets/linkedin-logo.svg?raw"
       target="_blank"
       class="flex items-center gap-2 no-underline group"
     >
-      <i class="fa-brands fa-github text-2xl m-0 text-white"></i>
+      <Icon name="fa-brands:github" class={"text-2xl m-0 text-white"} />
       <span class="underline group-hover:no-underline">GitHub</span>
     </a>
     <a
