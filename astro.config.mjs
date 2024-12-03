@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -49,5 +49,11 @@ export default defineConfig({
       theme: "github-dark-default"
     }
   },
-  integrations: [mdx(), sitemap(), tailwind(), robotsTxt(), icon()]
+  integrations: [mdx(), sitemap(), tailwind(), robotsTxt(), icon()],
+  env: {
+    schema: {
+      PUBLIC_SHOW_FUTURE: envField.boolean({ access: "public", "context": "server" }),
+      PUBLIC_SHOW_DRAFT: envField.boolean({ access: "public", "context": "server" }),
+    }
+  }
 });

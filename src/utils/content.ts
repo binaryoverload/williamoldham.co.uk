@@ -1,15 +1,13 @@
 import type { CollectionEntry } from "astro:content"
-
-const showFuture = import.meta.env.PUBLIC_SHOW_FUTURE === "true"
-const showDrafts = import.meta.env.PUBLIC_SHOW_DRAFTS === "true"
+import { PUBLIC_SHOW_DRAFT, PUBLIC_SHOW_FUTURE } from "astro:env/server"
 
 export function filterBlogPost(type?: CollectionEntry<"blog">["data"]["type"]) {
   return (blogPost: CollectionEntry<"blog">) => {
-    if (!showDrafts && blogPost.data.state === "draft") {
+    if (!PUBLIC_SHOW_DRAFT && blogPost.data.state === "draft") {
       return false
     }
 
-    if (!showFuture && new Date(blogPost.data.pubDate) > new Date()) {
+    if (!PUBLIC_SHOW_FUTURE && new Date(blogPost.data.pubDate) > new Date()) {
       return false
     }
 
