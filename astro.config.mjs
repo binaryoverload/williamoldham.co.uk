@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config"
+import { defineConfig, envField } from "astro/config"
 import mdx from "@astrojs/mdx"
 import sitemap from "@astrojs/sitemap"
 import tailwind from "@astrojs/tailwind"
@@ -15,6 +15,12 @@ import robotsTxt from "astro-robots-txt"
 // https://astro.build/config
 export default defineConfig({
   site: "https://williamoldham.co.uk",
+  env: {
+    schema: {
+      SHOW_FUTURE: envField.boolean({ context: 'client', access: 'public', default: false }),
+      SHOW_DRAFTS: envField.boolean({ context: 'client', access: 'public', default: false }),
+    }
+  },
   markdown: {
     remarkPlugins: [
       [
