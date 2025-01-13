@@ -1,13 +1,13 @@
 import type { CollectionEntry } from "astro:content"
-import { PUBLIC_SHOW_DRAFT, PUBLIC_SHOW_FUTURE } from "astro:env/server"
+import { SHOW_DRAFTS, SHOW_FUTURE } from "astro:env/server"
 
 export function filterBlogPost(type?: CollectionEntry<"blog">["data"]["type"]) {
   return (blogPost: CollectionEntry<"blog">) => {
-    if (!PUBLIC_SHOW_DRAFT && blogPost.data.state === "draft") {
+    if (!SHOW_DRAFTS && blogPost.data.state === "draft") {
       return false
     }
 
-    if (!PUBLIC_SHOW_FUTURE && new Date(blogPost.data.pubDate) > new Date()) {
+    if (!SHOW_FUTURE && new Date(blogPost.data.pubDate) > new Date()) {
       return false
     }
 

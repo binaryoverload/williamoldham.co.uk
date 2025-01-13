@@ -8,7 +8,10 @@ export default {
     "astro.config.mjs",
   ],
   theme: {
-    fontFamily: {},
+    fontFamily: {
+      mono: ['"Fira Code VF"', 'monospace'],
+      sans: ['"iA Writer Quattro"', 'sans-serif']
+    },
     extend: {
       typography: {
         quoteless: {
@@ -28,6 +31,9 @@ export default {
             },
             "code::after": {
               content: "none",
+            },
+            a: {
+              fontWeight: 'inherit',
             },
           },
         },

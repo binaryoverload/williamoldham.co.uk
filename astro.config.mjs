@@ -16,6 +16,12 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: "https://williamoldham.co.uk",
+  env: {
+    schema: {
+      SHOW_FUTURE: envField.boolean({ context: 'server', access: 'public', default: false }),
+      SHOW_DRAFTS: envField.boolean({ context: 'server', access: 'public', default: false }),
+    }
+  },
   markdown: {
     remarkPlugins: [[emoji, {
       accessible: true
@@ -49,11 +55,5 @@ export default defineConfig({
       theme: "github-dark-default"
     }
   },
-  integrations: [mdx(), sitemap(), tailwind(), robotsTxt(), icon()],
-  env: {
-    schema: {
-      PUBLIC_SHOW_FUTURE: envField.boolean({ access: "public", "context": "server" }),
-      PUBLIC_SHOW_DRAFT: envField.boolean({ access: "public", "context": "server" }),
-    }
-  }
+  integrations: [mdx(), sitemap(), tailwind(), robotsTxt(), icon()]
 });
