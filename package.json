@@ -44,7 +44,7 @@
     "tailwindcss-grid-areas": "^0.1.1"
   },
   "engines": {
-    "node": ">=20",
-    "pnpm": ">=8"
+    "node": ">=22",
+    "pnpm": ">=10"
   }
 }
