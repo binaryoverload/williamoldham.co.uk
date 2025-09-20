@@ -1,21 +1,21 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content"
-import GeneralLayout from "../../layouts/GeneralLayout.astro"
-import { getISODate } from "../../utils/date"
+import GeneralLayout from "~/layouts/GeneralLayout.astro"
+import { getISODate } from "~/utils/date"
 import {
   filterBlogPost,
   getEffectiveDate,
-  sortBlogPost,
-} from "../../utils/content"
-import DraftTag from "../../components/DraftTag.astro"
+sortByDate,
+} from "~/utils/content"
+import DraftTag from "~/components/DraftTag.astro"
 
 const blogPosts = (await getCollection("blog"))
   .filter(filterBlogPost("blog"))
-  .sort(sortBlogPost)
+  .sort(sortByDate)
 
 const resources = (await getCollection("blog"))
   .filter(filterBlogPost("resource"))
-  .sort(sortBlogPost)
+  .sort(sortByDate)
 
 function getEffectiveDateString(post: CollectionEntry<"blog">) {
   return getISODate(getEffectiveDate(post))

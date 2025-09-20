@@ -1,51 +1,15 @@
 ---
+import Prose from "~/components/Prose.astro"
 import GeneralLayout from "./GeneralLayout.astro"
 
 const { title } = Astro.props.frontmatter || Astro.props
 ---
 
 <GeneralLayout title={title}>
-  <div
-    class:list={[
-      "max-w-prose",
-      "mx-auto",
-      "prose",
-      "prose-a:text-gray-50",
-      "prose-hr:my-6",
-      "prose-gray",
-      "prose-invert",
-      "prose-headings:scroll-mt-5",
-      "prose-h1:text-2xl",
-      "prose-h2:text-xl",
-      "prose-h2:mb-2",
-      "prose-h2:mt-6",
-      "prose-h3:text-lg",
-      "prose-h3:mb-2",
-      "prose-h3:mt-4",
-      "prose-headings:text-base",
-      "prose-quoteless",
-      "prose-blockquote:not-italic",
-      "prose-blockquote:font-normal",
-      "prose-li:m-0",
-      "prose-inline-code:bg-gradient-to-br",
-      "prose-inline-code:from-blue-950/50",
-      "prose-inline-code:via-indigo-900/50",
-      "prose-inline-code:to-blue-800/50",
-      "prose-inline-code:border",
-      "prose-inline-code:border-blue-900",
-      "prose-inline-code:px-2",
-      "prose-inline-code:py-0",
-      "prose-inline-code:rounded-md",
-      "prose-inline-code:font-normal",
-      "prose-inline-code:text-sm/6",
-      "prose-inline-code:selection:bg-indigo-700",
-      "prose-inline-code:my-0",
-      "prose-inline-code:inline-block",
-    ]}
-  >
+  <Prose>
     <h1>{title}</h1>
     <slot />
-  </div>
+  </Prose>
 </GeneralLayout>
 
 <style is:global>

@@ -1,0 +1,53 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+import GeneralLayout from "~/layouts/GeneralLayout.astro"
+import { getISODate } from "~/utils/date"
+import { getEffectiveDate, sortByDate } from "~/utils/content"
+import Prose from "~/components/Prose.astro"
+
+const blogPosts = (await getCollection("notes")).sort(sortByDate)
+
+function getEffectiveDateString(post: CollectionEntry<"notes">) {
+  return getISODate(getEffectiveDate(post))
+}
+---
+
+<GeneralLayout title="Blog">
+  <div class="space-y-8">
+    <div class="max-w-prose mx-auto">
+      <h2 class="font-bold text-2xl mb-6 text-white">Admin's Log</h2>
+      <p class="mb-8">
+        These notes are small problems I've encountered in my adventures in
+        system administration and development. I'm documenting them to both help
+        future me and anyone else who might face similar issues.
+      </p>
+      <div class="space-y-6">
+        {
+          blogPosts.map(async (post) => {
+            const { Content } = await post.render()
+            return (
+              <div class="border border-dashed p-4 border-slate-500 rounded">
+                <div class="mb-4">
+                  <a
+                    class="hover:text-orange-300 text-lg font-semibold"
+                    href={`/notes/${post.slug}`}
+                  >
+                    {post.data.title}
+                  </a>
+                  <div class="text-sm text-gray-400">
+                    {getEffectiveDateString(post)}{post.data.tags ? (
+                      <span class="capitalize"> • {post.data.tags.join(", ")}</span>
+                    ) : null}
+                  </div>
+                </div>
+                <Prose>
+                  <Content />
+                </Prose>
+              </div>
+            )
+          })
+        }
+      </div>
+    </div>
+  </div>
+</GeneralLayout>

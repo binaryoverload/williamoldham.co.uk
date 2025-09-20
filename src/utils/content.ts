@@ -15,13 +15,20 @@ export function filterBlogPost(type?: CollectionEntry<"blog">["data"]["type"]) {
   }
 }
 
-export function getEffectiveDate(post: CollectionEntry<"blog">) {
+interface HasPubDate {
+  data: {
+    pubDate: Date
+    updatedDate?: Date
+  }
+}
+
+export function getEffectiveDate(post: HasPubDate) {
   return post.data.updatedDate || post.data.pubDate
 }
 
-export function sortBlogPost(
-  a: CollectionEntry<"blog">,
-  b: CollectionEntry<"blog">
+export function sortByDate(
+  a: HasPubDate,
+  b: HasPubDate
 ) {
   return getEffectiveDate(b).valueOf() - getEffectiveDate(a).valueOf()
 }

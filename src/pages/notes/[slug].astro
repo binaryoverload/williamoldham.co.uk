@@ -1,0 +1,37 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content"
+import TextLayout from "~/layouts/TextLayout.astro"
+import FormattedDate from "~/components/FormattedDate.astro"
+
+export async function getStaticPaths() {
+  const notes = await getCollection("notes")
+  return notes.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }))
+}
+
+type Props = CollectionEntry<"notes">
+const note = Astro.props
+
+const { Content } = await note.render()
+---
+
+<TextLayout title={note.data.title}>
+  <span class="font-semibold">
+    <FormattedDate date={note.data.pubDate} />
+    {
+      note.data.updatedDate ? (
+        <span>
+          (Updated <FormattedDate date={note.data.updatedDate} />)
+        </span>
+      ) : null
+    }
+    <span class="capitalize">
+      {note.data.tags ? (
+        <span> • {note.data.tags.join(", ")}</span>
+      ) : null}
+    </span>
+  </span>
+  <Content />
+</TextLayout>
