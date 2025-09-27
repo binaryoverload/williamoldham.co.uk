@@ -2,7 +2,7 @@
 import BaseHead from "~/components/BaseHead.astro"
 import Footer from "~/components/Footer.astro"
 import HeaderLink from "~/components/HeaderLink.astro"
-import { SITE_TITLE, SITE_DESCRIPTION } from "~/consts"
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS } from "~/consts"
 const { title } = Astro.props.frontmatter || Astro.props
 
 const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE
@@ -11,24 +11,24 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE
 <!doctype html>
 <html lang="en" class="h-full">
   <head>
-    <BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
+    <BaseHead title={pageTitle} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} />
   </head>
   <body class="bg-gray-950 min-h-full flex text-gray-200 selection:bg-gray-700">
     <div class="lg:max-w-4xl w-full px-8 mx-auto bg-gray-900 flex flex-col">
-      <div class="pt-16 lg:pt-32 pb-8">
-        <h1 class="text-3xl font-semibold font-mono text-center mb-4">
+      <header class="pt-16 lg:pt-32 pb-8">
+        <p class="text-3xl font-semibold font-mono text-center mb-4">
           {SITE_TITLE}
-        </h1>
-        <h2 class="mb-8 text-center">
+        </p>
+        <p class="mb-8 text-center">
           IT &amp; Networks Specialist &middot; DevOps Engineer &middot; Full-Stack Developer
-        </h2>
-        <div class="flex justify-center gap-1">
+        </p>
+        <nav class="flex justify-center gap-1">
           <HeaderLink href="/">Home</HeaderLink>
           <HeaderLink href="/about">About</HeaderLink>
           <HeaderLink href="/notes">Admin's Log</HeaderLink>
           <HeaderLink href="/contact">Contact</HeaderLink>
-        </div>
-      </div>
+        </nav>
+      </header>
       <main class="flex-1">
         <slot />
       </main>
