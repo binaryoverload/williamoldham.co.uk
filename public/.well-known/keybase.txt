@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/williamoldham
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://williamoldham.co.uk
+  * I am williamoldham (https://keybase.io/williamoldham) on keybase.
+  * I have a public key with fingerprint 00F4 F9CF A662 E6AC 5C39  A660 FB23 719C 9BDF 4520
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01018585cf4aee20efb5af00bacb275fb903de74d931192e7b5164ebaedcea922dd60a",
+      "fingerprint": "00f4f9cfa662e6ac5c39a660fb23719c9bdf4520",
+      "host": "keybase.io",
+      "key_id": "fb23719c9bdf4520",
+      "kid": "01018585cf4aee20efb5af00bacb275fb903de74d931192e7b5164ebaedcea922dd60a",
+      "uid": "fd8758beaedab4e38c611a4a10c32d19",
+      "username": "williamoldham"
+    },
+    "service": {
+      "hostname": "williamoldham.co.uk",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1763923014,
+  "expire_in": 157680000,
+  "prev": "2513723d6185de5b439937b49a3ea578c116a3ddf5ec17986451c0ada246aa6a",
+  "seqno": 3,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.17
+Comment: https://keybase.io/crypto
+
+yMIoAnicrVJZSFRRGB4tLUVD0R7Kh+pmtA1yz93vVAal0mKmlFIoTWe7ep3ljjPj
+qIkGPbQgYZZGRGoRlBUh9BJhhdoKPkgYShgYkkuZoFAggtW5Vm8+dl7O8n/f93/n
+43+ZuMwRH/V2TXFrx/BUQVRfz+1Kh7nxaE4thyxSw7lqOQ9d3KiX0FDY7TEJ5+J4
+wANN1mRsSJBSgacGkqHB8whiJKiygXReJFSViC4CoAtURTJQJIogJZhCXRAIUXjI
+OTnD9JfSYCBo+sO2LG9Iho4NqCgCVSCWsaizM28gQVSBjnVEDEkWeEYss0I2g5lD
+MEQzTIu9sYt70d4S+P/su/JPH6KpsoYoK0MkUVHDCgBQgoDHokCAbgNDNOiHPsrQ
+VabXa0Kf5SVl0MfVOTlWipiY2una31kKloGtjEoP0wkErbCFLS8DlIXDgZDLFgjX
+BBYZFLn/armR6ScsU8aI0GDItPycCzAkDpu2OFAVURdEHkhOjlYHzCB1mzZCVhWN
+Z8vuQyNMUpCBqAoiUVhchMpIEnVdVJGkQ5FCWdUwAAoUCTFkioGqa4okA8xDAgVJ
+gVCxIwrRCr/FuURmE5YyyZBZ6ofhyiDl6nq7S5Y7ouIdsTHR9qw54uOS/k0gfL7i
+V1F2g7h+9NuqLQ9G6jtjhgYtcGlH5oEb01Nfs659ntgxd7a+afOGrvbk49N5UoWn
+WEjxjIxdSW36nP9z4NfV3MzJixUDLW2eU/F0NHbu/IV1Wd5H7yePeab6dk/4Fn6U
+ny558nFbSlJx0fCmM2kLeF9uU+zrVRuPWlNbe7d/SmxEha3PDqcXdNzuOXffdy9y
+P7bq4Z2D7fNynCANRqd+etHp3DVzOZK3Mlg+X/vudLe2P6br5qsrXZ2DOYGdQ7Mt
+ewecJxpi5J/Vhdkf+tNTJ4/Mjsfdulkc9z35ce5Yr/dLbltVzZ6Z/ITayaLRhPGn
+/buuN2Yfmr0705yftq+DvFnXvHrtyd/3GUqv
+=lQL2
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/williamoldham
+
+==================================================================
