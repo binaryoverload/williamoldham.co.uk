@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../../tailwind.config.mjs';
 
 @layer base {
   @supports (font-variation-settings: normal) {
@@ -39,10 +39,10 @@
   }
 
   *::-webkit-scrollbar-track {
-    @apply bg-zinc-200 rounded;
+    @apply bg-zinc-200 rounded-sm;
   }
 
   *::-webkit-scrollbar-thumb {
-    @apply bg-zinc-600 cursor-auto rounded;
+    @apply bg-zinc-600 cursor-auto rounded-sm;
   }
 }

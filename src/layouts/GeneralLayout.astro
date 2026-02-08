@@ -27,7 +27,7 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE
           <HeaderLink href="/">Home</HeaderLink>
           <HeaderLink href="/about">About</HeaderLink>
           <HeaderLink href="/notes">Admin's Log</HeaderLink>
-          <HeaderLink href="https://binaryoverload.co.uk" target="_blank" class="!flex items-center gap-1"><Icon name="mingcute:external-link-line" /> Utils</HeaderLink>
+          <HeaderLink href="https://binaryoverload.co.uk" target="_blank" class="flex! items-center gap-1"><Icon name="mingcute:external-link-line" /> Utils</HeaderLink>
           <HeaderLink href="/contact">Contact</HeaderLink>
         </nav>
       </header>
@@ -37,6 +37,7 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE
       <Footer />
     </div>
     <style is:global>
+      @reference "tailwindcss";
       /* This code handles the "soloing" of technology category, hiding all li elements that don't belong to the category 
       
       This rule applies when any `.icon-x` inside `.technologies` is hovered.
