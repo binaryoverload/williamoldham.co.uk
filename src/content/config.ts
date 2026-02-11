@@ -21,4 +21,14 @@ const notes = defineCollection({
   }),
 })
 
-export const collections = { blog, notes }
+const snippets = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    languages: z.array(z.string()),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+  }),
+})
+
+export const collections = { blog, notes, snippets }

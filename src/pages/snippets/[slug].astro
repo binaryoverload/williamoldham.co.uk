@@ -1,0 +1,37 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content"
+import TextLayout from "~/layouts/TextLayout.astro"
+import FormattedDate from "~/components/FormattedDate.astro"
+
+export async function getStaticPaths() {
+  const snippets = await getCollection("snippets")
+  return snippets.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }))
+}
+
+type Props = CollectionEntry<"snippets">
+const snippet = Astro.props
+
+const { Content } = await snippet.render()
+---
+
+<TextLayout title={snippet.data.title}>
+  <span class="font-semibold">
+    <FormattedDate date={snippet.data.pubDate} />
+    {
+      snippet.data.updatedDate ? (
+        <span>
+          (Updated <FormattedDate date={snippet.data.updatedDate} />)
+        </span>
+      ) : null
+    }
+    <span class="capitalize">
+      {snippet.data.languages ? (
+        <span> • {snippet.data.languages.join(", ")}</span>
+      ) : null}
+    </span>
+  </span>
+  <Content />
+</TextLayout>
