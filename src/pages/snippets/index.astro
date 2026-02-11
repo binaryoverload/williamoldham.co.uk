@@ -3,7 +3,6 @@ import { getCollection, type CollectionEntry } from "astro:content"
 import GeneralLayout from "~/layouts/GeneralLayout.astro"
 import { getISODate } from "~/utils/date"
 import { getEffectiveDate, sortByDate } from "~/utils/content"
-import Prose from "~/components/Prose.astro"
 
 const snippets = (await getCollection("snippets")).sort(sortByDate)
 
