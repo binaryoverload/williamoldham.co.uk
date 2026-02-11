@@ -17,7 +17,7 @@ const snippet = Astro.props
 const { Content } = await snippet.render()
 ---
 
-<TextLayout title={snippet.data.title}>
+<TextLayout title={snippet.data.title} fullWidth>
   <span class="font-semibold">
     <FormattedDate date={snippet.data.pubDate} />
     {

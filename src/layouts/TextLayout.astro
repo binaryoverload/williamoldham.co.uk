@@ -2,11 +2,16 @@
 import Prose from "~/components/Prose.astro"
 import GeneralLayout from "./GeneralLayout.astro"
 
-const { title } = Astro.props.frontmatter || Astro.props
+type Props = {
+  title: string
+  fullWidth?: boolean
+}
+
+const { title, fullWidth } = Astro.props.frontmatter || Astro.props
 ---
 
 <GeneralLayout title={title}>
-  <Prose>
+  <Prose fullWidth={fullWidth}>
     <h1>{title}</h1>
     <slot />
   </Prose>
