@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content"
+import { getCollection, render, type CollectionEntry } from "astro:content"
 import GeneralLayout from "~/layouts/GeneralLayout.astro"
 import { getISODate } from "~/utils/date"
 import { getEffectiveDate, sortByDate } from "~/utils/content"
@@ -24,13 +24,13 @@ function getEffectiveDateString(post: CollectionEntry<"notes">) {
       <div class="space-y-6">
         {
           notes.map(async (post) => {
-            const { Content } = await post.render()
+            const { Content } = await render(post)
             return (
               <div class="border border-dashed p-4 border-slate-500 rounded-sm">
                 <div class="mb-4">
                   <a
                     class="hover:text-orange-300 text-lg font-semibold"
-                    href={`/notes/${post.slug}`}
+                    href={`/notes/${post.id}`}
                   >
                     {post.data.title}
                   </a>

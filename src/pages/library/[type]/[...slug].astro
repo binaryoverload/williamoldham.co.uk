@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content"
+import { type CollectionEntry, getCollection, render } from "astro:content"
 import TextLayout from "~/layouts/TextLayout.astro"
 import FormattedDate from "~/components/FormattedDate.astro"
 import { filterBlogPost } from "~/utils/content"
@@ -8,7 +8,7 @@ import DraftTag from "~/components/DraftTag.astro"
 export async function getStaticPaths() {
   const posts = await getCollection("blog")
   return posts.filter(filterBlogPost()).map((post) => ({
-    params: { type: post.data.type, slug: post.slug },
+    params: { type: post.data.type, slug: post.id },
     props: post,
   }))
 }
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">
 const post = Astro.props
 
-const { Content } = await post.render()
+const { Content } = await render(post)
 ---
 
 <TextLayout title={post.data.title}>

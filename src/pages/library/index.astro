@@ -31,7 +31,7 @@ function getEffectiveDateString(post: CollectionEntry<"blog">) {
           resources.map((post) => (
             <a
               class="contents hover:text-orange-300"
-              href={`/library/${post.data.type}/${post.slug}`}
+              href={`/library/${post.data.type}/${post.id}`}
             >
               <h2>
                 {post.data.title}
@@ -49,7 +49,7 @@ function getEffectiveDateString(post: CollectionEntry<"blog">) {
           blogPosts.map((post) => (
             <a
               class="contents hover:text-orange-300"
-              href={`/library/${post.data.type}/${post.slug}`}
+              href={`/library/${post.data.type}/${post.id}`}
             >
               <span
                 class:list={[
