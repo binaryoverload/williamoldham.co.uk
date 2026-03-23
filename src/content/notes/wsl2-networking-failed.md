@@ -1,7 +1,7 @@
 ---
 title: "WSL2 - Failed to configure mirrored networking"
 pubDate: 2026-03-23
-tags: ["windows"]
+tags: ["windows", "wsl2"]
 ---
 
 Sometimes, WSL2 in mirrored networking mode decides to fail to configure the network with this error:
