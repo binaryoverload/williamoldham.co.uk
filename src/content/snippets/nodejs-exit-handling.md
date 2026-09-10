@@ -4,14 +4,15 @@ pubDate: 2026-09-10
 languages: ["JS"]
 ---
 
-By default, Node.js servers do not handle exit signals like SIGTERM or SIGINT, so if you try to kill it via Ctrl+C in the terminal, or your container runtime tries to gracefully kill it, then it just won't do anything.
+By default, Node.js servers don't handle exit signals like SIGTERM or SIGINT, so if you try to kill one with Ctrl+C in the terminal or your container runtime tries to kill it gracefully, it just won't do anything.
 
 This is especially annoying in Kubernetes, where a container will just sit in a Terminating state, blocking a rollout until the grace period expires and it's forcibly killed.
 
-The solution is adding handlers manually for SIGTERM and SIGINT. I use this often enough, but I can never remember it when I make a new project, so here's a snippet!
+The solution is to add handlers manually for SIGTERM and SIGINT. I use this often enough, but I can never remember it when I make a new project, so here's a snippet!
 
 ```javascript
-// Place this at the top of your app file - you can use it for health checks or anything else that needs to know the server is shutting down
+// Place this at the top of your app file - you can use it for health checks
+// or anything else that needs to know the server is shutting down
 let shuttingDown = false
 
 const shutdown = (signal) => {
